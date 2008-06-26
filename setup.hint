@@ -1,0 +1,9 @@
+category: Multimedia
+requires: cygwin libao2 libid3tag0 libmad0
+sdesc: "Console MP3 player"
+ldesc: "mpg321 is a Free replacement for mpg123, a very popular
+command-line mp3 player. mpg123 is used for frontends,
+as an mp3 player and as an mp3 to wave file decoder
+(primarily for use with CD-recording software).
+In all of these capacities, mpg321 can be used as a drop-in
+replacement for mpg123."
