@@ -1,0 +1,9 @@
+DESCRIPTION="MP3 player, replacement for mpg123"
+HOMEPAGE="http://mpg321.sourceforge.net/"
+#SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://debian/pool/main/m/${PN}/${PN}_${PV}.tar.gz"
+
+ACLOCAL_FLAGS="-I m4"
+CYGCONF_ARGS="--with-default-audio=oss --disable-mpg123-symlink"
+
+DOCS="README.remote"
