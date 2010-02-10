@@ -1,0 +1,7 @@
+DESCRIPTION="MP3 player, replacement for mpg123"
+HOMEPAGE="http://mpg321.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"
+
+CYGCONF_ARGS="--with-default-audio=oss --disable-mpg123-symlink --enable-ipv6"
+
+DOCS="README.remote"
