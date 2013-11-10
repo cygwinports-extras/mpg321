@@ -1,0 +1,42 @@
+--- origsrc/mpg321-0.3.2-orig/mpg321.c	2012-03-25 07:27:49.000000000 -0500
++++ src/mpg321-0.3.2-orig/mpg321.c	2013-11-09 21:13:17.138890500 -0600
+@@ -93,6 +93,7 @@ int file_change = 0;
+ int remote_restart = 0;
+ int muted = 0;
+ char *id3_get_tag (struct id3_tag const *tag, char const *what, unsigned int maxlen);
++int calc_http_length(buffer *buf);
+ 
+ /* Buffer Size (if enabled) */
+ int buffer_size = 0;
+--- origsrc/mpg321-0.3.2-orig/mpg321.h	2012-03-25 07:27:49.000000000 -0500
++++ src/mpg321-0.3.2-orig/mpg321.h	2013-11-09 21:49:55.842649100 -0600
+@@ -198,8 +198,10 @@ void pause_play(buffer *buf, playlist *p
+ /* libao interfacing and general audio-out functions */
+ void check_ao_default_play_device();
+ void check_default_play_device();
++int check_default_play_device_buffer();
+ int playdevice_is_live();
+ void open_ao_playdevice(struct mad_header const *header);
++ao_device *open_ao_playdevice_buffer(struct mad_header const *header);
+ 
+ /* remote control (-R) functions */
+ void remote_get_input_wait(buffer *buf);
+@@ -242,7 +244,7 @@ typedef struct {
+ } fft_state;
+ 
+ typedef short int sound_sample;
+-//void fft_perform(const sound_sample *input, double *output, fft_state *state);
++void fft_perform(const sound_sample *input, double *output, fft_state *state);
+ 
+ fft_state *fft_init(void);
+ 
+--- origsrc/mpg321-0.3.2-orig/network.c	2012-03-25 07:27:49.000000000 -0500
++++ src/mpg321-0.3.2-orig/network.c	2013-11-09 21:15:33.729703000 -0600
+@@ -58,6 +58,7 @@ extern char authstring[80];
+ int http_file_length = 0;
+ 
+ int shoutcast(int);
++void do_basicauth(void);
+ 
+ int is_address_multicast(unsigned long address)
+ {

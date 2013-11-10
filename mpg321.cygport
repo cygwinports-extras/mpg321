@@ -1,5 +1,5 @@
 NAME="mpg321"
-VERSION=0.2.13-4
+VERSION=0.3.2
 RELEASE=1
 CATEGORY="Audio"
 SUMMARY="Console MP3 player"
@@ -8,8 +8,10 @@ line mp3 player. mpg123 is used for frontends, as an mp3 player and as an mp3
 to wave file decoder (primarily for use with CD-recording software). In all of
 these capacities, mpg321 can be used as a drop-in replacement for mpg123."
 HOMEPAGE="http://mpg321.sourceforge.net/"
-SRC_URI="mirror://sourceforge/mpg321/${NAME}-${VERSION}.tar.gz"
+SRC_URI="mirror://sourceforge/mpg321/${NAME}_${VERSION}.orig.tar.gz"
+SRC_DIR="${NAME}-${VERSION}-orig"
+PATCH_URI="0.3.2-Wimplicit-decls.patch"
 
-CYGCONF_ARGS="--with-default-audio=oss --disable-mpg123-symlink --enable-ipv6"
+CYGCONF_ARGS="--disable-alsa --disable-mpg123-symlink --enable-ipv6"
 
 DOCS="README.remote"
